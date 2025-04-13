@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>完成報到</title>
+  <style>
+    @font-face {
+      font-family: 'ChenYuluoyan';
+      src: url('ChenYuluoyan-Thin.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      font-family: 'ChenYuluoyan', sans-serif;
+      background-color: #fffaf0;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #333;
+      animation: fadeIn 1s ease-out;
+      font-weight: normal;
+
+    }
+
+    button {
+      margin-top: 40px;
+      font-size: 20px;
+      font-family: 'ChenYuluoyan', sans-serif;
+      padding: 10px 24px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #388E3C;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1 id="result">載入中...</h1>
+
+  <button onclick="goBack()"> 返回首頁</button>
+
+  <script>
+    const name = localStorage.getItem("username");
+    const seat = localStorage.getItem("selectedSeat");
+
+    const resultText = document.getElementById("result");
+
+    if (!name || !seat) {
+      resultText.textContent = "錯誤：無法找到報到資料";
+    } else {
+      resultText.textContent = `${name}，你選擇的座位是第 ${seat} 號 🎉`;
+    }
+
+    function goBack() {
+      // 可選：清除暫存
+      // localStorage.clear();
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
